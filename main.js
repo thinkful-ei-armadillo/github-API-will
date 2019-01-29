@@ -1,5 +1,4 @@
 // Review GitHug's API documentation for the LIST USER REPOSITORIES ENDPOINT to understand how this endpoint works.
-
 // User must be able to SEACH for a GitHub user handle
 // Search must trigger a call to GitHub's API
 // Repo Associated with that handle must be displayed on the page (must display the repo name and link to repo URL)
@@ -15,14 +14,6 @@
 // URL to access API
 // List public repos for specified user -> GET /users/:username/repos
 const url = 'https://api.github.com/users/'; 
-
-// function to format results into string of keys and values
-// function formatQueryParams(params) {
-//   const queryUsers = Object.keys(params)
-//     .map(key => `${key}=${params[key]}`);
-//   console.log(queryUsers);
-//   return queryUsers.join('&');
-// }
 
 
 // function to call GitHub's API to user's link URLs
@@ -43,12 +34,11 @@ function displaySearchResults(responseJson) {
   const results = []; 
   // 
   for (let i = 0; i < responseJson.length; i++) { // for loop to push results into results
-    results.push(
-      `
+    results.push(`
         <p><a href='${responseJson[i].html_url}'>${responseJson[i].name}</a></p><hr>
       `);
   }
-  $('#js-search-results').html(results.join('')); // target DIV and generate html string of loop results
+  $('#js-search-results').html(results.join('')); // target and generate html string of loop results
 }
 
 
@@ -68,6 +58,7 @@ function main() {
   watchForm();
 }
 
+// run on page load
 $(main);
 
 
